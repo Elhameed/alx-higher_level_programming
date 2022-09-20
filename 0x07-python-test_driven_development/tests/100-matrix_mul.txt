@@ -1,0 +1,102 @@
+============================
+How to Use 100-matrix_mul.py
+============================
+
+This module defines a matrix multiplication function ``matrix_mul(m_a, m_b)``.
+
+Usage
+=====
+``matrix_mul(...)`` returns a new matrix representing the multiplication of
+``m_a`` by ``m_b``.
+
+::
+
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+    >>> m_a = [
+    ... [1, 2],
+    ... [3, 4],
+    ... ]
+    >>> m_b = m_a
+    >>> print(matrix_mul(m_a, m_b))
+    [[7, 10], [15, 22]]
+
+::
+
+    >>> m_a = [[1, 2]]
+    >>> m_b = [
+    ... [3, 4],
+    ... [5, 6]
+    ... ]
+    >>> print(matrix_mul(m_a, m_b))
+    [[13, 16]]
+
+The function also works with floating-point numbers.
+
+::
+
+    >>> m_a = [
+    ... [1.2, 5.5, 6.2],
+    ... [4.66, 12.3, -9.2]
+    ... ]
+    >>> m_b = [
+    ... [5.0, 3.3],
+    ... [-2.9, 4.4],
+    ... [7.2, 4.4]
+    ... ]
+    >>> print(matrix_mul(m_a, m_b))
+    [[34.69, 55.44000000000001], [-78.61, 29.018000000000008]]
+
+Integers and floats can be combined.
+
+::
+
+    >>> m_a = [
+    ... [1, 2.2, 3.3, 4],
+    ... [5, 6, 7, 8.8],
+    ... ]
+    >>> m_b = [
+    ... [1.1, 2, 3.3],
+    ... [4.0, 5.5, 6],
+    ... [7, 8, 9],
+    ... [10.01, 11, 12.3]
+    ... ]
+    >>> print(matrix_mul(m_a, m_b))
+    [[73.03999999999999, 84.5, 95.4], [166.58800000000002, 195.8, 223.74]]
+
+A minimum of two arguments must be provided. Otherwise, a TypeError is raised.
+
+::
+
+    >>> print(matrix_mul()) # doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+    TypeError: matrix_mul() missing 2 required positional arguments: 
+    'm_a' and 'm_b'
+
+::
+
+    >>> print(matrix_mul()) # doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+    TypeError: matrix_mul() missing 2 required positional arguments: 
+    'm_a' and 'm_b'
+
+ValueErrors
+===========
+
+If two matrices cannot be multiplied (ie. the row count of ``m_a`` is not
+equal to the column count in ``m_b``), a ValueError is raised.
+
+::
+
+    >>> m_a = [
+    ... [1, 2],
+    ... [3, 4],
+    ... ]
+    >>> m_b = [
+    ... [1, 2],
+    ... [2, 3],
+    ... [4, 5]
+    ... ]
+    >>> print(matrix_mul(m_a, m_b))
+    Traceback (most recent call last):
+    ValueError: m_a and m_b can't be multiplied
+
